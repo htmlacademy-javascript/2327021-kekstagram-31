@@ -1,4 +1,7 @@
 
+// eslint-disable-next-line no-unused-vars
+const a = 1; // для коммита ненужная фигня
+
 // Функция для проверки длины строки.
 // вар 1
 const measureLength = function (string, maxLength) {
