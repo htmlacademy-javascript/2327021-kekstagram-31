@@ -8,15 +8,6 @@ const NAMES = ['Пауэр', 'Блек', 'Бульбозавр', 'Грюм', 'М
 
 const createUniqueIDComments = getRandomIntNoRepeat(1, 1000);
 
-const getComments = () => {
-  return {
-    id: createUniqueIDComments(),
-    avatar: 'img/avatar-' + getRandomElement(AVATARS),
-    message: getRandomElement(MESSAGES),
-    name: getRandomElement(NAMES),
-  }
-}
-
 const PHOTO_DESCRIPTIONS_COUNT = 25;
 
 const getRandomInteger = (min, max) => {
@@ -28,9 +19,7 @@ const getRandomInteger = (min, max) => {
 };
 
 
-const getRandomElement = (elements) => {
-  return elements[getRandomInteger(0, elements.length - 1)];
-};
+const getRandomElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 function getRandomIntNoRepeat(min, max) {
   const previousValues = [];
@@ -48,21 +37,27 @@ function getRandomIntNoRepeat(min, max) {
   };
 }
 
+const getComments = () => ({
+  id: createUniqueIDComments(),
+  avatar: `img/avatar-${getRandomElement(AVATARS)}`,
+  message: getRandomElement(MESSAGES),
+  name: getRandomElement(NAMES),
+});
+
 const createUniqueID = getRandomIntNoRepeat(1, 25);
 const createUniqueUrl = getRandomIntNoRepeat(1, 25);
 
 const createComments = () => Array.from({ length: getRandomInteger(1, 30) }, getComments);
 
-const photoDescription = () => {
-  return {
-    id: createUniqueID(),
-    url: 'photo/' + createUniqueUrl() + '.jpg',
-    description: 'описание фото' + getRandomElement(DESCRIPTIONS),
-    likes: getRandomInteger(15, 200),
-    comments: createComments()
-  };
-}
+const photoDescription = () => ({
+  id: createUniqueID(),
+  url: `photo/${createUniqueUrl()}.jpg`,
+  description: `описание фото ${getRandomElement(DESCRIPTIONS)}`,
+  likes: getRandomInteger(15, 200),
+  comments: createComments()
+});
 
 const photoDescriptionsAll = Array.from({ length: PHOTO_DESCRIPTIONS_COUNT }, photoDescription);
 
+// eslint-disable-next-line no-console
 console.log(photoDescriptionsAll);
