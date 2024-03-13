@@ -1,48 +1,50 @@
 
+// eslint-disable-next-line no-unused-vars
+const a = 1; // для коммита ненужная фигня
+
 // Функция для проверки длины строки.
 // вар 1
 const measureLength = function (string, maxLength) {
   if (string.length <= maxLength) {
-    string = true;
+    return true;
   } else {
-    string = false;
+    return false;
   }
-  return string;
 };
 
 measureLength('проверяемая строка', 20);
 
 
 // вар 2
-const measureLength = (string, maxLength) => (string.length <= maxLength) ? string = true : string = false;
+const measureLength1 = (str, maxLength) => (str.length <= maxLength);
 
-measureLength('проверяемая строка', 20);
-
+measureLength1('проверяемая строка', 20);
 
 
 // Функция для проверки, является ли строка палиндромом.
 // вар 1 - мой
-const poly = string1 => {
+const poly = (string1) => {
   const polyNormalise = string1.toLowerCase().replaceAll(' ', '');
   const reverseText = polyNormalise.split('').reverse().join('');
-  if (polyNormalise === reverseText) {
-    string1 = true;
-  } else { string1 = false; }
-  return string1;
-}
+  return polyNormalise === reverseText;
+};
+
+poly('ДовоД    дОВОд');
 
 
 // вар 2 - как по учебе (хотя там все мутно)
-const poly = string1 => {
-  let polyNormalise = string1.toLowerCase().replaceAll(' ', '');
+const poly1 = (string2) => {
+  const polyNormalise = string2.toLowerCase().replaceAll(' ', '');
   let reverseText = '';
   for (let i = polyNormalise.length - 1; i >= 0; i--) {
     reverseText += polyNormalise[i];
   }
   if (polyNormalise === reverseText) {
-    string1 = true;
+    string2 = true;
   } else {
-    string1 = false;
+    string2 = false;
   }
-  return string1;
-}
+  return string2;
+};
+
+poly1('ДовоД    дОВОд');
