@@ -44,3 +44,32 @@ const poly1 = (string2) => {
 };
 
 poly1('ДовоД    дОВОд');
+
+
+// 5.16. Функции возвращаются
+//Напишите функцию, которая принимает время начала и конца рабочего дня,
+// а также время старта и продолжительность встречи в минутах и возвращает true,
+// если встреча не выходит за рамки рабочего дня, и false, если выходит.
+// Время указывается в виде строки в формате часы:минуты. Для указания часов и минут могут
+// использоваться как две цифры, так и одна. Например, 8 часов 5 минут могут быть указаны
+// по-разному: 08:05, 8:5, 08:5 или 8:05.
+// Продолжительность задаётся числом. Гарантируется, что и рабочий день, и встреча укладываются
+// в одни календарные сутки.
+
+const convertTime = (TimeInHours) => {
+  const timeSeparation = TimeInHours.split(':');
+  const timeInMinutes = Number((timeSeparation[0] * 60) + Number(timeSeparation[1]));
+  return timeInMinutes;
+};
+
+const GetTimeTracking = (startWorkDay, endWorkDay, startMeeting, durations) => {
+  const startWorkDayMinute = convertTime(startWorkDay);
+  const endWorkDayMinute = convertTime(endWorkDay);
+  const startMeetingMinute = convertTime(startMeeting);
+  if (startMeetingMinute + durations >= endWorkDayMinute || startMeetingMinute < startWorkDayMinute) {
+    return false;
+  }
+  return true;
+};
+
+GetTimeTracking('8:00', '17:30', '08:00', 900);
