@@ -32,6 +32,6 @@ const photoDescription = () => ({
   comments: createComments()
 });
 
-const createPhotoObj = () => Array.from({ length: PHOTO_DESCRIPTIONS_COUNT }, photoDescription);
+const createPhotoObjects = () => Array.from({ length: PHOTO_DESCRIPTIONS_COUNT }, photoDescription);
 
-export { createPhotoObj };
+export { createPhotoObjects };
