@@ -1,4 +1,4 @@
-import { createPhotoObj } from './data';
-// eslint-disable-next-line no-console
-console.log(createPhotoObj);
+import './data';
 import './miniatures.js';
+import './util.js';
+import './render-photo.js';

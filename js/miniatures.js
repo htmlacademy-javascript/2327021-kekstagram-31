@@ -4,11 +4,12 @@ const templatePicture = document.querySelector('#picture').content.querySelector
 const pictures = document.querySelector('.pictures');
 const similarObjects = createPhotoObjects();
 
-
-const newTemplatePicture = templatePicture.cloneNode(true);
 const pictureFragment = document.createDocumentFragment();
 
-similarObjects.forEach(({ url, description, likes, comments }) => {
+similarObjects.forEach(({ id, url, description, likes, comments }) => {
+  const newTemplatePicture = templatePicture.cloneNode(true);
+
+  newTemplatePicture.dataset.pictureId = id;
   newTemplatePicture.querySelector('.picture__img').src = url;
   newTemplatePicture.querySelector('.picture__img').alt = description;
   newTemplatePicture.querySelector('.picture__likes').textContent = likes;
