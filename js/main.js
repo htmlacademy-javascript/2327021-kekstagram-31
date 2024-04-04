@@ -1,4 +1,3 @@
-import './data';
-import './miniatures.js';
-import './util.js';
-import './render-photo.js';
+import { pictures } from './miniatures.js';
+
+import { openModal } from './modal.js';

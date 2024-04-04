@@ -18,3 +18,5 @@ similarObjects.forEach(({ id, url, description, likes, comments }) => {
 });
 
 pictures.appendChild(pictureFragment);
+
+export { pictures, similarObjects };

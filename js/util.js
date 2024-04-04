@@ -26,3 +26,7 @@ function getRandomIntNoRepeat(min, max) {
 }
 
 export { getRandomInteger, getRandomElement, getRandomIntNoRepeat };
+
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export { isEscapeKey };
