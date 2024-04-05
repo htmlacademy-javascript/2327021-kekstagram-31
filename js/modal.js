@@ -1,9 +1,9 @@
-import { similarObjects } from './miniatures.js';
+import { similarObjects, picturesContainer } from './miniatures.js';
 import { isEscapeKey } from './util.js';
 
 const body = document.querySelector('body');
 const bigPictureWrapper = document.querySelector('.big-picture');
-const bigPictureImg = document.querySelector('.big-picture__img').querySelector('img');
+const bigPictureImg = document.querySelector('.big-picture__img img');
 const bigPictureCloseButton = bigPictureWrapper.querySelector('#picture-cancel');
 const bigPictureDescription = bigPictureWrapper.querySelector('social__caption');
 const bigPictureLikes = bigPictureWrapper.querySelector('.likes-count');
@@ -30,7 +30,12 @@ function closeModal() {
 }
 
 const openModal = (pictureId) => {
+  bigPictureCloseButton.addEventListener('click', onCloseByClick);
+  document.addEventListener('keydown', (onDocumentKeyDown));
+
   const currentPhoto = similarObjects.find((photo) => photo.id === Number(pictureId));
+  bigPictureWrapper.classList.remove('hidden');
+
   const socialCommentsFragment = document.createDocumentFragment();
 
   socialCommentCountTotal.textContent = currentPhoto.comments.length;
@@ -56,18 +61,17 @@ const openModal = (pictureId) => {
 
   body.classList.add('modal-open');
 
-  bigPictureWrapper.classList.remove('hidden');
-  document.addEventListener('keydown', (onDocumentKeyDown));
-  bigPictureCloseButton.removeEventListener('click', onCloseByClick);
+
 };
 
+const modalShow = () => {
+  picturesContainer.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    const currentPicture = evt.target.closest('.picture');
+    if (currentPicture) {
+      openModal(currentPicture.dataset.pictureId);
+    }
+  });
+};
 
-bigPictureWrapper.addEventListener('click', (evt) => {
-  const currentPicture = evt.target.closest('.picture');
-
-  if (currentPicture) {
-    openModal(currentPicture.dataset.pictureId);
-  }
-});
-
-export { openModal };
+export { modalShow };

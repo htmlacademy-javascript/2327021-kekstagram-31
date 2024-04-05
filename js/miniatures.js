@@ -1,7 +1,7 @@
 import { createPhotoObjects } from './data.js';
 
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
-const pictures = document.querySelector('.pictures');
+const picturesContainer = document.querySelector('.pictures');
 const similarObjects = createPhotoObjects();
 
 const pictureFragment = document.createDocumentFragment();
@@ -17,6 +17,6 @@ similarObjects.forEach(({ id, url, description, likes, comments }) => {
   pictureFragment.appendChild(newTemplatePicture);
 });
 
-pictures.appendChild(pictureFragment);
+picturesContainer.appendChild(pictureFragment);
 
-export { pictures, similarObjects };
+export { picturesContainer, similarObjects };
