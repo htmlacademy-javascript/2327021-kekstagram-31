@@ -14,7 +14,7 @@ const PHOTO_DESCRIPTIONS_COUNT = 25;
 
 const getComments = () => ({
   id: createUniqueIDComments(),
-  avatar: `img/avatar-${getRandomElement(AVATARS)}`,
+  avatar: `img/avatar-${getRandomElement(AVATARS)}.svg`,
   message: getRandomElement(MESSAGES),
   name: getRandomElement(NAMES),
 });
