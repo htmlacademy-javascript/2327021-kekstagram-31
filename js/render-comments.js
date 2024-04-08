@@ -26,7 +26,7 @@ const renderNextComments = () => {
   });
 
   socialCommentList.appendChild(socialCommentsFragment);
-  socialCommetnCountShown.textcontent = renderedCommentsLength;
+  socialCommetnCountShown.innerHTML = renderedCommentsLength;
   socialCommentCountTotal.textContent = comments.length;
 
   if (renderedCommentsLength >= comments.length) {
